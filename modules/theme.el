@@ -1,7 +1,8 @@
 (defvar my-theme-package 'color-theme-solarized)
 (defvar my-theme 'solarized-dark)
 
-(when (package-installed-p my-theme-package)
-  (if window-system
-    (load-theme 'solarized-dark t)))
+(when window-system
+    (when (not (package-installed-p my-theme-package))
+      (package-install my-theme-package))
+    (load-theme 'solarized-dark t))
 			  
