@@ -35,7 +35,7 @@
 
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
-              ("NEXT" :foreground "blue" :weight bold)
+              ("NEXT" :foreground "green" :weight bold)
               ("DONE" :foreground "forest green" :weight bold)
               ("WAITING" :foreground "orange" :weight bold)
               ("HOLD" :foreground "magenta" :weight bold)
@@ -46,9 +46,9 @@
 
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "inbox.org")
-               "* TODO %?\n%U\n")
+               "* TODO %?\n\t%U\n")
               ("n" "note" entry (file "inbox.org")
-               "* %? :NOTE:\n%U\n")
+               "* %? :NOTE:\n\t%U\n")
               ))
       )
 
