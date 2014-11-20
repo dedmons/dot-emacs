@@ -8,7 +8,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(ledger-mode neotree magit)
+(defvar my-packages '(ledger-mode neotree magit
+                      fish-mode)
   "List of packages to have installed")
 
 (dolist (p my-packages)
