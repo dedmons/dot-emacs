@@ -44,6 +44,13 @@
               ))
       )
 
+(setq org-tag-faces
+      (quote (("Work" :foreground "blue")
+              ("Personal" :foreground "forest green")
+              ("BILL" :foreground "orange" :weight bold)
+              ))
+      )
+
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "inbox.org")
                "* TODO %?\n\t%U\n")
