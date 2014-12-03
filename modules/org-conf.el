@@ -8,6 +8,13 @@
 
 (setq org-agenda-files (quote ("~/Documents/org")))
 
+(org-add-link-type "rdar" 'browse-rdar-url)
+
+(defun browse-rdar-url (path)
+  "Visit Radar URL"
+  (let ((rdar-url (concat "rdar:" path)))
+    (start-process (concat "open " rdar-url) nil "open" rdar-url)))
+
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
