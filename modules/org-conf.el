@@ -6,7 +6,7 @@
 (setq org-directory "~/Documents/org/")
 (setq org-default-notes-file "~/Documents/org/inbox.org")
 
-(setq org-agenda-files (quote ("~/Documents/org")))
+(setq org-agenda-files '("~/Documents/org" "~/Documents/org/local"))
 
 (org-add-link-type "rdar" 'browse-rdar-url)
 
@@ -72,19 +72,48 @@
 (setq org-agenda-ndays 7)
 (setq org-agenda-start-on-weekday nil)
 
+;; Skip Functions
+(defun dje/org-agenda-skip-tag (tag &optional others)
+  "Skip all entries that correspond to TAG.
+If OTHERS is true, skip all entries that do not correspond to TAG."
+  (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
+        (current-headline (or (and (org-at-heading-p)
+                                   (point))
+                              (save-excursion (org-back-to-heading)))))
+    (if others
+        (if (not (member tag (org-get-tags-at current-headline)))
+            next-headline
+          nil)
+      (if (member tag (org-get-tags-at current-headline))
+          next-headline
+        nil))))
+
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
-      (quote (("a" "Agenda"
-               ((agenda "" nil)
-                (tags "REFILE"
-                      ((org-agenda-overriding-header "Tasks to Refile")
-                       (org-tags-match-list-sublevels nil)))
-                (tags-todo "-CANCELED/!NEXT"
-                           ((org-agenda-overriding-header "Next Tasks")))
-                (tags-todo "HOLD|WAITING"
-                           ((org-agenda-overriding-header "On Hold & Waiting Tasks"))))
-               nil))
-             )
+      '((" " "Overview Agenda"
+         ((agenda "" nil)
+          (tags "REFILE"
+                ((org-agenda-overriding-header "Tasks to Refile")
+                 (org-tags-match-list-sublevelds nil)))
+          (tags-todo "-CANCELED/!NEXT"
+                     ((org-agenda-overriding-header "Next Tasks")))
+          (tags-todo "HOLD|WAITING"
+                     ((org-agenda-overriding-header "On Hold & Waiting Tasks"))))
+         ((org-agenda-skip-function '(dje/org-agenda-skip-tag "Work"))))
+        ("w" "Work Agenda"
+         ((agenda ""
+                  ((org-agenda-overriding-header "Week View")
+                   ))
+          (tags-todo "Radar"
+                     ((org-agenda-overriding-header "Radar Items")
+                      ))
+          (tags-todo "-CANCELED/!NEXT"
+                     ((org-agenda-overriding-header "Next Tasks")
+                      ))
+          (tags-todo "HOLD|WAITING"
+                     ((org-agenda-overriding-header "On Hold & Waiting Tasks")
+                      )))
+         ((org-agenda-skip-function '(dje/org-agenda-skip-tag "Work" 't)))))
       )
 
 ;;;;; Refile Settings
