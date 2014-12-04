@@ -71,6 +71,8 @@
 ;;;;; Agenda Settings
 (setq org-agenda-ndays 7)
 (setq org-agenda-start-on-weekday nil)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
 
 ;; Skip Functions
 (defun dje/org-agenda-skip-tag (tag &optional others)
