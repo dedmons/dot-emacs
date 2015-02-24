@@ -56,7 +56,7 @@
 (setq org-tag-faces
       (quote (("Work" :foreground "blue")
               ("Personal" :foreground "forest green")
-              ("BILL" :foreground "orange" :weight bold)
+              ("Financial" :foreground "orange" :weight bold)
               ))
       )
 
