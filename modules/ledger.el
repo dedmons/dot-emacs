@@ -1,12 +1,13 @@
 ;; Fix ledger path in cocoa ledger
+(set 'ledger-path (shell-command-to-string "which ledger"))
 (set 'ledger-binary-path
-  (car (last
-    (split-string
-      (substring
-        (shell-command-to-string "which ledger")
-      0 -1)
+  (if (string= "" 'ledger-path)
+    (car (last
+      (split-string
+        (substring 'ledger-path 0 -1)
     "\n")
-   )))
+    ))
+    'ledger-path))
 
 (set 'ledger-post-amount-alignment-column 60)
 
