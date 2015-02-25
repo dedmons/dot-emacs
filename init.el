@@ -9,7 +9,8 @@
   (package-refresh-contents))
 
 (defvar my-packages '(ledger-mode neotree magit
-                      fish-mode)
+                      fish-mode haskell-mode ghc shm
+                      undo-tree)
   "List of packages to have installed")
 
 (dolist (p my-packages)
