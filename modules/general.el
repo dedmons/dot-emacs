@@ -7,3 +7,5 @@
 
 ;; JS indent
 (setq js-indent-level 2)
+
+(global-undo-tree-mode)

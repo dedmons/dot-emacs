@@ -177,3 +177,21 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
                   nil))  ; available to archive
             (or subtree-end (point-max)))
         next-headline))))
+
+(defun dje/org-after-save-sync ()
+  (call-process "git" nil nil nil "add" buffer-file-name)
+  (call-process "git" nil nil nil "commit" "-m"
+                (concat "Auto commit of '"
+                        buffer-file-name
+                        "' on "
+                        (format-time-string "%Y-%m-%dT%H:%M:%S")))
+  (call-process "git" nil nil nil "rebase")
+  (call-process "git" nil nil nil "push"))
+
+;; defvar timer-var
+;; defun timer-func: do stuff, call timer and set new timer to timer-var
+;; call timer-func in hook
+  
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'after-save-hook 'dje/org-after-save-sync nil 'is-local)))
