@@ -185,7 +185,8 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
                         buffer-file-name
                         "' on "
                         (format-time-string "%Y-%m-%dT%H:%M:%S")))
-  (call-process "git" nil nil nil "rebase")
+  (call-process "git" nil nil nil "fetch")
+  (call-process "git" nil nil nil "rebase" "origin/master")
   (call-process "git" nil nil nil "push"))
 
 ;; defvar timer-var
