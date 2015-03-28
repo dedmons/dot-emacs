@@ -179,15 +179,18 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
         next-headline))))
 
 (defun dje/org-after-save-sync ()
-  (call-process "git" nil nil nil "add" buffer-file-name)
-  (call-process "git" nil nil nil "commit" "-m"
-                (concat "Auto commit of '"
-                        buffer-file-name
-                        "' on "
-                        (format-time-string "%Y-%m-%dT%H:%M:%S")))
-  (call-process "git" nil nil nil "fetch")
-  (call-process "git" nil nil nil "rebase" "origin/master")
-  (call-process "git" nil nil nil "push"))
+  (if (eq (call-process "git" nil nil nil "status") 0)
+      (progn (call-process "git" nil nil nil "add" buffer-file-name)
+             (call-process "git" nil nil nil "commit" "-m"
+                           (concat "Auto commit of '"
+                                   buffer-file-name
+                                   "' on "
+                                   (format-time-string "%Y-%m-%dT%H:%M:%S")))
+             (call-process "git" nil nil nil "fetch")
+             (call-process "git" nil nil nil "rebase" "origin/master")
+             (call-process "git" nil nil nil "push")
+             (message "Change Submitted"))
+    (message "Not a git repo")))
 
 ;; defvar timer-var
 ;; defun timer-func: do stuff, call timer and set new timer to timer-var
