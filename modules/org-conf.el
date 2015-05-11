@@ -73,6 +73,8 @@
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-skip-deadline-if-done t)
 (setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+(setq org-agenda-skip-deadline-prewarning-if-scheduled t)
 
 ;; Skip Functions
 (defun dje/org-agenda-skip-tag (tag &optional others)
