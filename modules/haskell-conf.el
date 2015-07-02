@@ -9,12 +9,15 @@
 (autoload 'ghc-debug "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
+(setq ghc-debug t)
+
 (custom-set-variables
   '(haskell-process-suggest-remove-import-lines t)
   '(haskell-process-auto-import-loaded-modules t)
   '(haskell-process-log t)
   '(haskell-tags-on-save t)
-  '(haskell-process-type 'cabal-repl))
+  '(haskell-process-type 'cabal-repl)
+  '(haskell-process-check-cabal-config-on-load nil))
 
 (eval-after-load 'haskell-mode '(progn
   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)

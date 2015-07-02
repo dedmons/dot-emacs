@@ -1,7 +1,9 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;             '("melpa" . "http://melpa.milkbox.net/packages/")
+             '("melpa-stable" . "http://stable.melpa.org/packages/")
+             t)
 
 (package-initialize)
 
@@ -10,7 +12,7 @@
 
 (defvar my-packages '(ledger-mode neotree magit
                       fish-mode haskell-mode ghc shm
-                      undo-tree)
+                      undo-tree company-ghc)
   "List of packages to have installed")
 
 (dolist (p my-packages)
