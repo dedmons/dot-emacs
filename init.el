@@ -1,32 +1,47 @@
 (require 'package)
 
 (add-to-list 'package-archives
-;;             '("melpa" . "http://melpa.milkbox.net/packages/")
-             '("melpa-stable" . "http://stable.melpa.org/packages/")
-             t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+;;(add-to-list 'package-archives
+;;             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(ledger-mode neotree magit
-                      fish-mode haskell-mode ghc shm
-                      undo-tree company-ghc)
+(defvar dje/my-packages '(ledger-mode
+                          neotree
+                          magit
+                          fish-mode
+                          haskell-mode
+                          ghc
+                          shm
+                          undo-tree
+                          company-ghc)
   "List of packages to have installed")
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+(defun dje/packages-installed-p ()
+  (loop for pkg in dje/packages
+        when (not (package-installed-p pkg)) do (return nil)
+        finally (return t)))
+
+(unless (dje/packages-installed-p)
+  (message "%s" "Refreshing package database...")
+  (package-refresh-contents)
+  (dolist (pkg dje/my-packages)
+    (when (not (package-installed-p pkg))
+      (package-install pkg))))
 
 ;; load init files
-(defvar emacs-dir (file-name-directory load-file-name)
+(defvar dje/emacs-dir (file-name-directory load-file-name)
   "top level emacs dir")
-(defvar module-dir (concat emacs-dir "modules/")
+(defvar dje/module-dir (concat dje/emacs-dir "modules/")
   "My emacs configs")
 
 ;; Add to load path
-(add-to-list 'load-path module-dir)
+(add-to-list 'load-path dje/module-dir)
 
 ;; Load all .el file in each folder of load-path
 (mapc 'load (directory-files module-dir nil "^[^#].*el$"))
