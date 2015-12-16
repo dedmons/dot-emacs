@@ -27,8 +27,7 @@
   :ensure t)
 
 (use-package neotree
-  :ensure t
-  :bind ("C-M-t" . neotree-toggle))
+  :ensure t)
 
 (use-package rust-mode
   :ensure t)

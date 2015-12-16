@@ -1,20 +1,10 @@
 (use-package helm
   :ensure t
-  :bind (("C-x b" . helm-mini)
-         ("C-c h g" . helm-google-suggest)
-         ("C-x C-f" . helm-find-files))
   :config
   (require 'helm-config)
   (require 'recentf)
 
   (setq recentf-max-saved-items 50)
-  
-  (global-set-key (kbd "C-c h") 'helm-command-prefix)
-  (global-unset-key (kbd "C-x c"))
-
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-  (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
