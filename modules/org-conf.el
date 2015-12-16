@@ -94,30 +94,20 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
-      '((" " "Overview Agenda"
-         ((agenda "" nil)
-          (tags "REFILE"
-                ((org-agenda-overriding-header "Tasks to Refile")
-                 (org-tags-match-list-sublevelds nil)))
-          (tags-todo "-CANCELED/!NEXT"
-                     ((org-agenda-overriding-header "Next Tasks")))
-          (tags-todo "HOLD|WAITING"
-                     ((org-agenda-overriding-header "On Hold & Waiting Tasks"))))
-         ((org-agenda-skip-function '(dje/org-agenda-skip-tag "Work"))))
-        ("w" "Work Agenda"
-         ((agenda ""
-                  ((org-agenda-overriding-header "Week View")
-                   ))
-          (tags-todo "Radar"
-                     ((org-agenda-overriding-header "Radar Items")
-                      ))
-          (tags-todo "-CANCELED/!NEXT"
-                     ((org-agenda-overriding-header "Next Tasks")
-                      ))
-          (tags-todo "HOLD|WAITING"
-                     ((org-agenda-overriding-header "On Hold & Waiting Tasks")
-                      )))
-         ((org-agenda-skip-function '(dje/org-agenda-skip-tag "Work" 't)))))
+      (quote (("A" "Agenda"
+               ((agenda ""
+                        nil)
+                (tags "REFILE"
+                      ((org-agenda-overriding-header "Tasks to Refile")
+                       (org-tags-match-list-sublevels nil)))
+                (tags-todo "-CANCELED/!NEXT"
+                           ((org-agenda-overriding-header "Next Tasks")))
+                (tags-todo "HOLD|WAITING"
+                           ((org-agenda-overriding-header "On Hold & Waiting Tasks")))
+                (agenda "BILL"
+                        ((org-agenda-overriding-header "Bills"))))
+               nil))
+             )
       )
 
 ;;;;; Refile Settings
