@@ -2,6 +2,7 @@
 
 ;; Company key bindings
 (bind-key "C-c e" 'company-complete)
+(bind-key "C-c y" 'company-yasnippet)
 
 ;; Helm key bindings
 (bind-key "M-x" 'helm-M-x)
