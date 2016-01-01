@@ -4,14 +4,14 @@
   :config
   ;; Fix ledger path in cocoa ledger
   (set 'ledger-path (shell-command-to-string "which ledger"))
-  (set 'ledger-binary-path
-       (if (string= "" 'ledger-path)
-           (car (last
-                 (split-string
-                  (substring 'ledger-path 0 -1)
-                  "\n")
-                 ))
-         'ledger-path))
+  ;;(set 'ledger-binary-path
+  ;;     (if (not (string= "" 'ledger-path))
+  ;;         (car (last
+  ;;               (split-string
+  ;;                (substring 'ledger-path 0 -1)
+  ;;                "\n")
+  ;;               ))
+  ;;       ledger-path))
 
   (set 'ledger-post-amount-alignment-column 60)
 
