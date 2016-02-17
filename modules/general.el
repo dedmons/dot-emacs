@@ -1,3 +1,7 @@
+;; Mac key config
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
+
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
 
@@ -18,3 +22,9 @@
   `((".*" "~/.emacs.d/saves/" t)))
 
 (setq backup-by-copy t)
+
+;; ido config
+(ido-mode 1)
+
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
