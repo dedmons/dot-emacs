@@ -1,9 +1,11 @@
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.hs\\'")
 
 (use-package company-ghci
   :ensure t
-  :config
+  :defer t
+  :init
   (add-hook 'haskell-mode-hook 'haskell-doc-mode)
   (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
   (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
@@ -20,6 +22,7 @@
 
 (use-package flycheck-haskell
   :ensure t
-  :config
+  :defer t
+  :init
   (add-hook 'haskell-mode-hook 'flycheck-mode)
   (add-hook 'flycheck-mode-hook 'flycheck-haskell-configure))
