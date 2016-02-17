@@ -31,3 +31,5 @@
 
 ;; Neotree
 (bind-key "C-M-t" 'neotree-toggle)
+
+(bind-key "C-c C-l" 'haskell-process-load-or-reload)
