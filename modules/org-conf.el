@@ -188,6 +188,6 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 ;; defun timer-func: do stuff, call timer and set new timer to timer-var
 ;; call timer-func in hook
   
-(add-hook 'org-mode-hook
-          (lambda ()
-            (add-hook 'after-save-hook 'dje/org-after-save-sync nil 'is-local)))
+;(add-hook 'org-mode-hook
+;          (lambda ()
+;            (add-hook 'after-save-hook 'dje/org-after-save-sync nil 'is-local)))
