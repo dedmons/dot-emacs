@@ -1,6 +1,6 @@
-
 (use-package ledger-mode
   :ensure t
+  :mode "\\.ledger\\'"
   :config
   ;; Fix ledger path in cocoa ledger
   (set 'ledger-path (shell-command-to-string "which ledger"))

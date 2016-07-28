@@ -1,4 +1,3 @@
-
 (use-package color-theme
              :if window-system
              :ensure t)

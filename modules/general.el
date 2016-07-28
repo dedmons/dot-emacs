@@ -1,3 +1,7 @@
+;; Mac key config
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
+
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
 
@@ -19,23 +23,8 @@
 
 (setq backup-by-copy t)
 
+;; ido config
+(ido-mode 1)
 
-(use-package fish-mode
-  :ensure t)
-
-(use-package magit
-  :ensure t)
-
-(use-package neotree
-  :ensure t)
-
-(use-package rust-mode
-  :ensure t)
-
-(use-package toml-mode
-  :ensure t)
-
-(use-package undo-tree
-  :ensure t
-  :config
-  (global-undo-tree-mode))
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
