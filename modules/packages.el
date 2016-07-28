@@ -3,12 +3,12 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package circe
-  :ensure t
-  :config
-  (setq circe-network-options
-        '(("Freenode"
-           :nick "dedmons"))))
+; (use-package circe
+;   :ensure t
+;   :config
+;   (setq circe-network-options
+;         '(("Freenode"
+;            :nick "dedmons"))))
 
 (use-package fish-mode
   :ensure t)

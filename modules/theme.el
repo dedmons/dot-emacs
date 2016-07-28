@@ -11,4 +11,3 @@
              :config
              (message "Color Theme Config")
              (load-theme 'solarized t))
-
