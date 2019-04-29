@@ -1,9 +1,15 @@
-[submodule "vendor/use-package"]
-	path = vendor/use-package
+[submodule "lisp/use-package"]
+	path = lisp/use-package
 	url = git@github.com:jwiegley/use-package.git
 [submodule "snippets"]
 	path = snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+[submodule "lisp/emacs-fireplace"]
+	path = lisp/emacs-fireplace
+	url = git@github.com:johanvts/emacs-fireplace.git
 [submodule "vendor/emacs-fireplace"]
 	path = vendor/emacs-fireplace
 	url = git@github.com:johanvts/emacs-fireplace.git
+[submodule "vendor/use-package"]
+	path = vendor/use-package
+	url = git@github.com:jwiegley/use-package.git
