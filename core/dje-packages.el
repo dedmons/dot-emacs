@@ -1,4 +1,4 @@
-(require 'cl)
+(require 'cl-lib)
 (require 'package)
 
 (add-to-list 'package-archives
@@ -23,7 +23,7 @@
 
 (defun dje-packages-installed-p ()
   "Check if all packages in `dje-packages' are installed."
-  (every #'package-installed-p dje-packages))
+  (cl-every #'package-installed-p dje-packages))
 
 (defun dje-require-package (package)
   "Install PACKAGE unless alread installed."
