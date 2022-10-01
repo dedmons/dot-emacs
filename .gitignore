@@ -1,7 +1,21 @@
-/saves/
-/auto-save-list/
-/elpa/
+saves/
+auto-save-list
+elpa
 /ido.last
-/bookmarks
+bookmarks
 /projectile-bookmarks.eld
-/recentf
+recentf
+
+eln-cache/
+transient/
+
+custom.el
+
+# Compiled elisp files
+*.elc
+
+# Backup files
+*~
+
+# Undo-tree save-files
+*.~undo-tree
