@@ -3,8 +3,6 @@
 
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages") t)
 
 (setq package-use-dir (expand-file-name "elpa" config-dir))
 (package-initialize)

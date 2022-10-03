@@ -1,4 +1,4 @@
-;;; dje-macos.el --- DJEmacs macOS specific config
+;;; dje-linux.el --- DJEmacs linux specific config
 ;;
 ;; Copyright © 2022 DJ Edmonson
 ;;
@@ -19,9 +19,5 @@
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
-;; CMD is Meta, ALT is Super
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'super)
-
-(provide 'dje-macos)
-;;; dje-macos.el ends here
+(provide 'dje-linux)
+;;; dje-linux.el ends here

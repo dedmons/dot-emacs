@@ -1,7 +1,21 @@
+;;; dje-custom.el --- DJEmacs customizable variables
+;;
+;; Copyright © 2022 DJ Edmonson
+;;
+;; Author: DJ Edmonson
+;; URL: https://github.com/dedmons/djemacs
 
+;;; Commentary:
+
+;; Some Linux specific stuff.
+
+;;; License:
+
+
+;;; Code:
 
 (defgroup dje nil
-  "DJE Emacs configuration"
+  "DJEmacs configuration"
   :prefix "dje-"
   :group 'convenience)
 
@@ -27,3 +41,4 @@ Will only occur if `dje-whitespace' is also enabled."
   :group 'dje)
 
 (provide 'dje-custom)
+;;; dje-custom.el ends here
