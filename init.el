@@ -58,8 +58,11 @@
 
 ;; General UI tweeks
 (setq inhibit-startup-message t)
-(scroll-bar-mode nil)
-(tool-bar-mode nil)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
+(unless (eq system-type 'darwin)
+  (menu-bar-mode -1))
 
 (line-number-mode t)
 (column-number-mode t)
@@ -126,8 +129,9 @@
 (windmove-default-keybindings)
 
 ;; CMD is Meta, ALT is Super
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'super)
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'super))
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
