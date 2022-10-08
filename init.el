@@ -234,6 +234,7 @@
 
 (use-package slime
   :init
+  (load (expand-file-name "~/.quicklisp/slime-helper.el"))
   (setq inferior-lisp-program "sbcl"))
 
 (use-package flycheck
@@ -253,6 +254,9 @@
 (use-package magit
   :bind
   ("C-c g" . magit-file-dispatch))
+
+;; Open files with .cl extension in lisp-mode
+(add-to-list 'auto-mode-alist '("\\.cl\\'" . lisp-mode))
 
 (when window-system
   (let ((elapsed (float-time (time-subtract (current-time)
