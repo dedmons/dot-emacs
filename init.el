@@ -39,6 +39,7 @@
 
 ;; Set custom file location
 (setq custom-file (expand-file-name "custom.el" config-dir))
+(load custom-file)
 
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
 (setq-default tab-width 2)            ;; but maintain correct appearance
@@ -67,7 +68,21 @@
 (global-display-line-numbers-mode t)
 (global-hl-line-mode t)
 
-(set-face-attribute 'default nil :font "Hack" :height 140)
+(defgroup dje nil
+  "DJE Custom Vars."
+  :prefix "dje-"
+  :group 'convenience)
+
+(defcustom dje-face-height 140
+  "Face hight to use."
+  :type 'integer
+  :group 'dje
+  :set
+  #'(lambda (var value)
+      (progn (set-default var value)
+             (set-face-attribute 'default nil :height value))))
+
+(set-face-attribute 'default nil :font "Hack" :height dje-face-height)
 
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
