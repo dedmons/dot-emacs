@@ -235,7 +235,8 @@
 (use-package slime
   :init
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
-  (setq inferior-lisp-program "sbcl"))
+  (setq inferior-lisp-program "sbcl")
+  (setq slime-contribs '(slime-scratch slime-editing-commands)))
 
 (use-package flycheck
   :custom
@@ -250,6 +251,11 @@
 (use-package flycheck-inline
   :requires flycheck
   :init (global-flycheck-inline-mode))
+
+(use-package company
+  :bind
+  ("<tab>" . company-indent-or-complete-common)
+  :config (global-company-mode t))
 
 (use-package magit
   :bind
