@@ -240,7 +240,7 @@
   :init
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
   (setq inferior-lisp-program "sbcl")
-  (setq slime-contribs '(slime-scratch slime-editing-commands)))
+  (setq slime-contribs '(slime-scratch slime-editing-commands slime-asdf)))
 
 (use-package flycheck
   :custom
