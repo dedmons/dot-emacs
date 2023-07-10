@@ -238,7 +238,10 @@
 
 (use-package slime
   :init
-  (load (expand-file-name "~/.quicklisp/slime-helper.el"))
+  (cond ((file-exists-p "~/quicklisp/slime-helper.el")
+         (load (expand-file-name "~/quicklisp/slime-helper.el")))
+        ((file-exists-p "~/.quicklisp/slime-helper.el")
+         (load (expand-file-name "~/quicklisp/slime-helper.el"))))
   (setq inferior-lisp-program "sbcl")
   (setq slime-contribs '(slime-scratch slime-editing-commands slime-asdf)))
 
@@ -257,13 +260,31 @@
   :init (global-flycheck-inline-mode))
 
 (use-package company
-  :bind
-  ("<tab>" . company-indent-or-complete-common)
-  :config (global-company-mode t))
+;  :bind
+;  ("<tab>" . company-indent-or-complete-common)
+  :init (global-company-mode t))
 
 (use-package magit
   :bind
   ("C-c g" . magit-file-dispatch))
+
+(use-package yaml-mode
+  :mode (("\\.yml\\'" . yaml-mode)
+         ("\\.yaml\\'" . yaml-mode)))
+
+(use-package go-mode
+  :mode (("\\.go\\'" . go-mode)))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init (setq lsp-keymap-prefix "C-c l")
+  :config (lsp-enable-which-key-integration t)
+  :hook ((go-mode) . lsp))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-enable t))
 
 ;; Open files with .cl extension in lisp-mode
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . lisp-mode))
